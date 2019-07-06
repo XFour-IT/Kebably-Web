@@ -48,15 +48,26 @@
               });
                 });
             });
-      }
+            if (navigator.geolocation) {
+              navigator.geolocation.getCurrentPosition(function(position) {
+                var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longtitude);
+                map.setCenter(latlng);
+              }, function() {
+                handleLocationError(true, infoWindow, map.getCenter());
+              });
+            } else {
+              // Browser doesn't support Geolocation
+              handleLocationError(false, infoWindow, map.getCenter());
+            }
+      };
+      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(browserHasGeolocation ?
+                              'Error: The Geolocation service failed.' :
+                              'Error: Your browser doesn\'t support geolocation.');
+        infoWindow.open(map);
+      };
     </script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAflz9VNtsYdbDYiNUAHz2fAWR75EX_hzI&callback=initMap"></script>
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        // firebase.auth().onAuthStateChanged(user => { });
-        firebase.database().ref('/path/to/ref').on('value', snapshot => { });
-        firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
-      });
-    </script>
   </body>
 </html>
