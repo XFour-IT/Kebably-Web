@@ -1,38 +1,27 @@
-var kebabData = {
-    "id": "places",
-    "type": "symbol",
-    "layout": {
-        "icon-image": "{icon}",
-        "icon-allow-overlap": true
-        },
-    "source": {
-        "type": "geojson",
-        "data": {
-            "type": "FeatureCollection",
-            "features": [
-            {
-                "type": "Feature",
-                "properties": {
-                "description": "Description",
-                "icon": "custom-marker"
-                },
-                "geometry": {
-                "type": "Point",
-                "coordinates": [-0.9895331,51.455027]
-                }
-            }]
-        }
-    }
-}
+const firebaseConfig = {
+    apiKey: "AIzaSyBuXp-d0Dvvq3au_2yecyPm9ehdV4hCzFo",
+    authDomain: "junehack.firebaseapp.com",
+    databaseURL: "https://junehack.firebaseio.com",
+    projectId: "junehack",
+    storageBucket: "junehack.appspot.com",
+    messagingSenderId: "739569160546",
+    appId: "1:739569160546:web:68baca3bf461fca2"
+  };
+  firebase.initializeApp(firebaseConfig);
 
+var xmlHttp = new XMLHttpRequest();
+xmlHttp.open( "GET", "https://junehack.firebaseio.com/map.json", false ); // false for synchronous request
+xmlHttp.send( null );
+var responseData = xmlHttp.responseText;
 
+var kebabData = JSON.parse(responseData)
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiYmVuamlzb2Z0IiwiYSI6ImNqeXJrcTFkODA0enEzb3N5eW1ubHk0NTAifQ.yzYfg4Oiyly_WJJ25W81CQ';
     var map = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/mapbox/streets-v11',
       center: [-0.9713584,51.4581074],
-      zoom: 11.15
+      zoom: 11
     });
 
 map.on('load', function() {

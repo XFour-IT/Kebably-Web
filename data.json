@@ -1,0 +1,36 @@
+{
+  "id": "places",
+  "type": "symbol",
+  "layout": {
+      "icon-image": "{icon}",
+      "icon-allow-overlap": true
+      },
+  "source": {
+      "type": "geojson",
+      "data": {
+          "type": "FeatureCollection",
+          "features": [
+          {
+              "type": "Feature",
+              "properties": {
+              "description": "Description",
+              "icon": "custom-marker"
+              },
+              "geometry": {
+              "type": "Point",
+              "coordinates": [-0.7946529,51.4182284]
+              }
+          }, {
+            "type": "Feature",
+            "properties": {
+            "description": "Kebab Van no. 2",
+            "icon": "custom-marker"
+            },
+            "geometry": {
+            "type": "Point",
+            "coordinates": [-1.0006466,51.4477656]
+            }
+        }]
+      }
+  }
+}
