@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css?family=Lexend+Deca|Roboto&display=swap');
+
+body {
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+h1 {
+    font-family: 'Lexend Deca', sans-serif;
+}
+
+#flex-cont {
+    display: flex;
+    justify-content: space-around;
+}
+
+#users {
+    order: 1;
+}
+
+#owners {
+    order: 2;
+}
+
